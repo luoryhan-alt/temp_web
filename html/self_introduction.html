@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 | 感兴趣的活动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f9f6f0;
+            color: #333;
+            line-height: 1.8;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #e64a19;
+        }
+        main {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 5%;
+        }
+        .about-box {
+            background-color: white;
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .top-banner {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            background-color: #f5f5f5;
+        }
+        .about-content {
+            padding: 2.5rem;
+        }
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 2rem;
+            border: 4px solid #ffe0b2;
+        }
+        .about-title {
+            color: #e64a19;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #ffe0b2;
+        }
+        .self-intro {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            min-height: 150px;
+        }
+        .tags {
+            margin-bottom: 2rem;
+        }
+        .tags h3 {
+            color: #e64a19;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .tag {
+            background-color: #ffe0b2;
+            color: #e64a19;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+        .goals h3 {
+            color: #e64a19;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .goal-list {
+            padding-left: 1.5rem;
+        }
+        .goal-list li {
+            margin-bottom: 0.8rem;
+        }
+        .back {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+        .back a {
+            display: inline-block;
+            background-color: #e64a19;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav a {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            .avatar {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">感兴趣的活动</div>
+            <nav>
+                <a href="index.html">首页</a>
+                <a href="challenge.html">我的挑战</a>
+                <a href="about.html">关于我</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="about-box">
+            <img src="../pic/art.jpg" alt="我的艺术创作" class="top-banner">
+            <div class="about-content">
+                <img src="../pic/self.jpg" alt="我的头像" class="avatar">
+                <h2 class="about-title">关于我</h2>
+                <div class="self-intro">
+                    我不相信你能进这个网站会不知道我是谁，这里没什么好看的，你可以欣赏一下我最近的艺术，就在上面。
+                </div>
+                <div class="tags">
+                    <h3>我的小兴趣</h3>
+                    <div class="tag-list">
+                        <div class="tag">深度强化学习</div>
+                        <div class="tag">神经网络</div>
+                        <div class="tag">多目标优化</div>
+                        <div class="tag">分布式RLHF微调</div>
+                        <div class="tag">IRL</div>
+                    </div>
+                </div>
+                <div class="goals">
+                    <h3>近期小目标</h3>
+                    <ul class="goal-list">
+                        <li>两个月学完8门课程</li>
+                        <li>重新开始练习拳击</li>
+                        <li>每天按时干饭，少熬夜</li>
+                        <li>锻炼身体，养身重回18岁</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="back">
+            <a href="index.html">← 返回首页</a>
+        </div>
+    </main>
+</body>
+</html>
