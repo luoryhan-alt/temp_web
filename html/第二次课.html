@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1次课：个性戒指凸雕刻字建模</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Georgia", "微软雅黑", serif;
+            background-color: #f5f7fa;
+            padding: 40px 0;
+            line-height: 1.6;
+        }
+
+        .content-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin: 40px 0 20px;
+            color: #2c3e50;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 20px;
+            background-color: #3498db;
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin: 30px 0 15px;
+            color: #3498db;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+
+        .btn-wrap {
+            margin: 0 0 20px;
+        }
+
+        .about-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border-radius: 10px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+            width: fit-content;
+        }
+
+        .about-btn:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #1f6fb1 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .about-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+        }
+
+        .lesson-img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 0 0 10px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .step-tip {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin: 0 0 15px;
+            font-style: italic;
+        }
+        /* ====================================== */
+        /* 以下为增量追加的美化样式，无任何原有内容修改 */
+        /* ====================================== */
+        /* 步骤标题加底部小分隔线，提升层级感，和h2呼应 */
+        h3 {
+            position: relative;
+            padding-bottom: 8px;
+        }
+        h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 2px;
+            background-color: #3498db;
+            border-radius: 1px;
+        }
+        /* 图片hover轻微缩放，增加交互感，过渡更丝滑 */
+        .lesson-img {
+            transition: all 0.4s ease-in-out;
+            transform: scale(1);
+        }
+        .lesson-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.15);
+        }
+        /* 步骤说明文字行高微调，阅读更舒适，颜色轻微提亮 */
+        .content-container p {
+            line-height: 1.75;
+            color: #3a4756;
+        }
+        /* 图注文字轻微加深，位置微调 */
+        .step-tip {
+            color: #556677;
+            margin: 5px 0 25px;
+            letter-spacing: 0.5px;
+        }
+        /* 实践体会栏目加轻底色+内边距，突出重点，视觉更聚焦 */
+        .content-container h2:last-of-type + p {
+            background-color: #f8fbff;
+            padding: 20px 25px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            margin-top: 10px;
+        }
+        /* 渲染图和体会栏目顶部间距优化，板块分隔更清晰 */
+        .content-container h2:nth-last-of-type(2) {
+            margin-top: 50px;
+        }
+        .content-container h2:last-of-type {
+            margin-top: 50px;
+        }
+        /* 按钮在移动端的适配，防止溢出 */
+        .about-btn {
+            max-width: 100%;
+            white-space: nowrap;
+        }
+        /* 内容容器在小屏幕的内边距适配，更友好 */
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 25px 20px;
+            }
+            .lesson-img:hover {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <!-- 返回课程主页按钮 -->
+        <div class="btn-wrap">
+            <a href="index.html" class="about-btn">← 返回课程主页</a>
+        </div>
+
+        <!-- 简单标题+引入 -->
+        <h1>第2次课：通过3D打印机打印模型文件</h1>
+        <p>本次课通过Blender建立老校区校门的模型，通过拓竹打印机bambuLab A1 mini实现3D打印 </p>
+
+        <!-- 步骤1-12：依次对应12张图片 -->
+        <h3>步骤1</h3>
+        <img src="../照片/第二次课/t1.jpg" alt="建模步骤1" class="lesson-img">
+        <p class="step-tip">图1</p>
+        <p>首先校准打印机位置</p>
+
+        <h3>步骤2</h3>
+        <img src="../照片/第二次课/t2.png" alt="建模步骤2" class="lesson-img">
+        <p class="step-tip">图2</p>
+        <p>将打印机通过局域网与电脑端的软件连接，方便上传模型文件</p>
+
+        <h3>步骤3</h3>
+        <img src="../照片/第二次课/t3.png" alt="建模步骤3" class="lesson-img">
+        <p class="step-tip">图3</p>
+        <p>将通过blender建模得到的老校门模型上传至打印机开始打印工作</p>
+
+        <h3>步骤4</h3>
+        <img src="../照片/第二次课/t4.png" alt="建模步骤4" class="lesson-img">
+        <p class="step-tip">图4</p>
+        <p>3D打印机开始打印工作</p>
+
+        <h3>步骤5</h3>
+        <img src="../照片/第二次课/t5.jpg" alt="建模步骤5" class="lesson-img">
+        <p class="step-tip">图5</p>
+        <p>打印时出现了一些问题，耗材可能质量有一些故障</p>
+
+        <h3>步骤6</h3>
+        <img src="../照片/第二次课/t6.jpg" alt="建模步骤6" class="lesson-img">
+        <p class="step-tip">图6</p>
+        <p>助教老师来帮助我们排查问题</p>
+
+        <h3>步骤7</h3>
+        <img src="../照片/第二次课/t7.png" alt="建模步骤7" class="lesson-img">
+        <p class="step-tip">图7</p>
+        <p>恢复立体视图，将圆环再次显现出来。</p>
+
+        <h3>步骤8</h3>
+        <img src="../照片/第二次课/t8.png" alt="建模步骤8" class="lesson-img">
+        <p class="step-tip">图8</p>
+        <p>通过投影的方式将文字凸雕在圆环上。</p>
+
+        <h3>步骤9</h3>
+        <img src="../照片/第二次课/t9.png" alt="建模步骤9" class="lesson-img">
+        <p class="step-tip">图9</p>
+        <p>设置成合适的样子。</p>
+
+        <h3>步骤10</h3>
+        <img src="../照片/第二次课/t10.png" alt="建模步骤10" class="lesson-img">
+        <p class="step-tip">图10</p>
+        <p>选择倒角，将四条边都选中，并将倒角半径设置成5mm。然后导出3D模型，方便之后课程进行打印。</p>
+
+        <h3>步骤11</h3>
+        <img src="../照片/第二次课/t11.png" alt="建模步骤11" class="lesson-img">
+        <p class="step-tip">图11</p>
+        <p>进入渲染界面，实时渲染查看效果。</p>
+
+        <h3>步骤12</h3>
+        <img src="../照片/第二次课/t12.png" alt="建模步骤12" class="lesson-img">
+        <p class="step-tip">图12</p>
+        <p>赋予材质。</p>
+
+        <!-- 导出渲染图展示栏目 -->
+        <h2>导出渲染图展示</h2>
+        <p>以下为本次校门3D建模的渲染图像：</p>
+        <img src="../照片/第二次课/r1.png" alt="戒指建模最终导出渲染图" class="lesson-img">
+        <p class="step-tip">老校门3D建模-最终导出渲染图</p>
+
+        <!-- 新增：本次实践课程体会 -->
+        <h2>本次实践课程体会</h2>
+        <p>通过本次学习，使用blender进行了3D建模，将这个模型通过拓</p>
+    </div>
+</body>
+</html>

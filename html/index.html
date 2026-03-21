@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从代码到实物：造你所想课程纪录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Georgia", "微软雅黑", serif;
+            background-color: #f5f7fa;
+            padding: 40px 0;
+            line-height: 1.6;
+        }
+
+        .content-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            width: 100%;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin: 35px 0 20px;
+            color: #2c3e50;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 20px;
+            background-color: #3498db;
+            border-radius: 2px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: #4a5568;
+            text-align: justify;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .vertical-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .single-btn-wrap {
+            margin-top: 15px;
+        }
+
+        .about-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border-radius: 10px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+            width: fit-content;
+        }
+
+        .about-btn:hover {
+            background: linear-gradient(135deg, #2980b9 0%, #1f6fb1 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .about-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-container">
+        <h1>从代码到实物：造你所想课程纪录</h1>
+
+        <img src="../照片/t1.png" alt="课程相关图片" class="profile-img">
+
+        <h2>关于我</h2>
+        <p>你们好，我的名字是罗一航，学号2023115075，本科生，大一就读于物理科学与技术学院的应用物理专业，目前就读于计算机与人工智能学院的计算机科学与技术专业，我对强化学习及其深度强化学习以及agent智能体有一定了解与学习，曾参与过晟医智能公司的智能体开发与咨询。</p>
+        
+        <p>我上这个课有两个原因。首先，这个课程是学校的专业必修课，作为一位西南交通大学计算机科学与技术专业的本科生，我有义务完成学校的专业课。其次，我对代码到实物这门课本身有一定的兴趣，也很愿意花时间来学习这门课程。</p>
+
+        <h2>学习过程</h2>
+        <div class="vertical-btn-group">
+            <a href="第一次课.html" class="about-btn">第1次课：个性戒指（凸雕刻字）</a>
+            <a href="第二次课.html" class="about-btn">第2次课：通过3D打印机打印模型文件</a>
+        </div>
+
+        <h2>期末项目</h2>
+        <div class="single-btn-wrap">
+            <a href="#" class="about-btn">期末项目详情待补充</a>
+        </div>
+
+        <h2>其它</h2>
+        <p>后续将逐步完善课程学习记录、项目制作过程与效果展示，也会分享对课程的思考与建议。</p>
+    </div>
+</body>
+</html>
