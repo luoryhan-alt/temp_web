@@ -2,215 +2,76 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <!-- 适配移动端，保证手机上显示正常 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人挑战 | 火锅&学习&佛系续命</title>
+    <title>活动列表</title>
     <style>
-        /* 全局样式重置，消除默认边距 */
+        /* 基础样式重置，避免不同浏览器样式差异 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
+            font-family: "微软雅黑", sans-serif;
         }
 
-        /* 页面背景和整体布局 */
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
+        /* 页面容器，居中显示+限制宽度，更美观 */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
         }
 
-        /* 头部导航栏 */
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 1rem 5%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 2rem;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #3498db;
-        }
-
-        /* 主要内容区 */
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 5%;
-        }
+        /* 活动标题 */
         .page-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 30px;
             text-align: center;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-        }
-        .page-title h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-        .page-title p {
-            color: #666;
-            font-size: 1.1rem;
         }
 
-        /* 活动卡片容器（响应式布局） */
-        .activity-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
+        /* 活动链接列表 */
+        .activity-list {
+            list-style: none;
         }
 
-        /* 单个活动卡片样式 */
-        .activity-card {
-            width: 350px;
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        /* 鼠标悬浮时卡片上浮+阴影加深 */
-        .activity-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        /* 每个活动链接项 */
+        .activity-item {
+            margin-bottom: 15px;
         }
 
-        /* 活动图片样式 */
-        .activity-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover; /* 图片自适应，不拉伸变形 */
-            border-bottom: 1px solid #eee;
+        /* 超链接样式（重点） */
+        .activity-link {
+            display: block; /* 块级显示，点击区域更大 */
+            padding: 18px 20px;
+            background-color: #f5f5f5;
+            color: #2d8cf0; /* 蓝色链接色，符合用户习惯 */
+            text-decoration: none; /* 去掉默认下划线 */
+            border-radius: 8px; /* 圆角，更美观 */
+            font-size: 18px;
+            transition: background-color 0.3s; /*  hover过渡效果 */
         }
 
-        /* 活动卡片内容 */
-        .activity-content {
-            padding: 1.5rem;
-        }
-        .activity-title {
-            font-size: 1.3rem;
-            color: #2c3e50;
-            margin-bottom: 0.8rem;
-        }
-        .activity-desc {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-        .activity-info {
-            display: flex;
-            justify-content: space-between;
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-        }
-        /* 按钮样式 */
-        .join-btn {
-            display: block;
-            width: 100%;
-            padding: 0.8rem;
-            background-color: #3498db;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background-color 0.3s;
-        }
-        .join-btn:hover {
-            background-color: #2980b9;
-        }
-
-        /* 页脚样式 */
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 3rem;
-        }
-        .footer-text {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* 适配手机端（屏幕宽度小于768px时） */
-        @media (max-width: 768px) {
-            .activity-card {
-                width: 100%;
-            }
-            .header-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            nav a {
-                margin-left: 1rem;
-                margin-right: 1rem;
-            }
+        /* 鼠标悬停时的样式 */
+        .activity-link:hover {
+            background-color: #e8f4ff;
+            color: #1d73d8;
         }
     </style>
 </head>
 <body>
-    <!-- 头部导航（个人化） -->
-    <header>
-        <div class="header-container">
-            <div class="logo">感兴趣的活动</div>
-            <nav>
-                <a href="index.html">首页</a>
-                <a href="challenge.html">我的挑战</a>
-                <a href="self_introduction.html">关于我</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- 主要内容（专属活动） -->
-    <main id="activities">
-        <div class="page-title">
-            <h1>这是一个严肃的活动网站</h1>
-            <p>为我的朋友们列出可参加的活动</p>
-        </div>
-
-        <!-- 活动卡片容器 -->
-        <div class="activity-container">
-            <!-- 活动1：在家做火锅（对应pic/t1.png） -->
-            <div class="activity-card">
-                <img src="pic/hotpot.jpg" alt="在家做火锅" class="activity-img">
-                <div class="activity-content">
-                    <h3 class="activity-title">在家自己做火锅</h3>
-                    <p class="activity-desc">可以来我家一起做火锅吃，火锅吃起来很方便，可以省去一部分的规划时间。</p>
-                    <div class="activity-info">
-                        <span>活动时间：<br>2026年3月29日<br>周日</span>
-                        <span>地点：<br>季柳园<br>具体联系微信@LuoryHan</span>
-                    </div>
-                    <a href="hotpot.html" class="join-btn">具体规划</a>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- 页脚（个人化） -->
-    <footer>
-        <div class="footer-text">
-            © 二〇二六 从从帮备案号 | 法人: @Teacher Jia | 审批: @Minister Wan | 从从军委直属: @Commander Yu
-        </div>
-    </footer>
+    <div class="container">
+        <!-- 页面标题 -->
+        <h1 class="page-title">活动列表</h1>
+        
+        <!-- 活动超链接列表 -->
+        <ul class="activity-list">
+            <li class="activity-item">
+                <a href="index_luory.html" class="activity-link">罗一航的活动</a>
+            </li>
+            <li class="activity-item">
+                <a href="t2-activity.html" class="activity-link">...的活动(自行添加)</a>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
