@@ -2,59 +2,173 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!-- 适配移动端，保证手机上显示正常 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>活动列表</title>
     <style>
-        /* 基础样式重置，避免不同浏览器样式差异 */
+        /* 全局样式重置 + 自定义变量（方便统一调整） */
+        :root {
+            --primary-color: #2d8cf0;
+            --primary-dark: #1d73d8;
+            --bg-light: #f8f9fa;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --card-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "微软雅黑", sans-serif;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
         }
 
-        /* 页面容器，居中显示+限制宽度，更美观 */
+        body {
+            background-color: var(--bg-light);
+            background-image: linear-gradient(120deg, #f5f7fa 0%, #e4eaf5 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        /* 页面容器 */
         .container {
             max-width: 800px;
-            margin: 50px auto;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* 活动标题 */
+        /* 页面标题 */
         .page-title {
-            font-size: 24px;
+            font-size: 32px;
             color: #333;
-            margin-bottom: 30px;
+            margin: 30px 0 40px;
             text-align: center;
+            font-weight: 600;
+            position: relative;
         }
 
-        /* 活动链接列表 */
+        .page-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+            border-radius: 2px;
+            margin: 12px auto 0;
+        }
+
+        /* 活动列表 - 网格布局（适配多卡片） */
         .activity-list {
             list-style: none;
+            display: grid;
+            gap: 24px;
         }
 
-        /* 每个活动链接项 */
+        /* 活动卡片核心样式 */
         .activity-item {
-            margin-bottom: 15px;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: var(--transition);
         }
 
-        /* 超链接样式（重点） */
+        .activity-item:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        /* 活动图片区域 */
+        .activity-img {
+            width: 100%;
+            height: 180px; /* 固定图片高度，保证统一 */
+            overflow: hidden;
+        }
+
+        .activity-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 图片自适应，不拉伸变形 */
+            transition: var(--transition);
+        }
+
+        .activity-item:hover .activity-img img {
+            transform: scale(1.05); /* 悬浮时图片轻微放大 */
+        }
+
+        /* 活动文字链接区域 */
         .activity-link {
-            display: block; /* 块级显示，点击区域更大 */
-            padding: 18px 20px;
-            background-color: #f5f5f5;
-            color: #2d8cf0; /* 蓝色链接色，符合用户习惯 */
-            text-decoration: none; /* 去掉默认下划线 */
-            border-radius: 8px; /* 圆角，更美观 */
-            font-size: 18px;
-            transition: background-color 0.3s; /*  hover过渡效果 */
+            display: block;
+            padding: 20px 24px;
+            color: #333;
+            text-decoration: none;
+            position: relative;
         }
 
-        /* 鼠标悬停时的样式 */
-        .activity-link:hover {
-            background-color: #e8f4ff;
-            color: #1d73d8;
+        .activity-link-text {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .activity-link-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* 链接右侧小箭头（装饰） */
+        .activity-link::after {
+            content: "→";
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 16px;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .activity-item:hover .activity-link::after {
+            transform: translateY(-50%) translateX(4px);
+            opacity: 1;
+        }
+
+        /* 链接文字渐变下划线（悬浮显示） */
+        .activity-link::before {
+            content: "";
+            position: absolute;
+            left: 24px;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+            transition: var(--transition);
+        }
+
+        .activity-item:hover .activity-link::before {
+            width: calc(100% - 48px);
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            .page-title {
+                font-size: 26px;
+                margin: 20px 0 30px;
+            }
+
+            .activity-img {
+                height: 140px;
+            }
+
+            .activity-link {
+                padding: 16px 20px;
+            }
+
+            .activity-link-text {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
@@ -63,14 +177,37 @@
         <!-- 页面标题 -->
         <h1 class="page-title">活动列表</h1>
         
-        <!-- 活动超链接列表 -->
+        <!-- 活动卡片列表 -->
         <ul class="activity-list">
+            <!-- 活动项1：带图片+描述 -->
             <li class="activity-item">
-                <a href="luory.html" class="activity-link">罗一航的活动</a>
+                <div class="activity-img">
+                    <!-- 替换成实际活动图片地址 -->
+                    <img src="https://picsum.photos/800/400?random=1" alt="罗一航的活动封面">
+                </div>
+                <a href="luory.html" class="activity-link">
+                    <div class="activity-link-text">罗一航的活动</div>
+                    <div class="activity-link-desc">
+                        这里可以添加活动简介，比如活动时间、地点、主题等信息，让内容更丰富
+                    </div>
+                </a>
             </li>
+
+            <!-- 活动项2：示例 -->
             <li class="activity-item">
-                <a href="t2-activity.html" class="activity-link">...的活动(自行添加)</a>
+                <div class="activity-img">
+                    <!-- 替换成实际活动图片地址 -->
+                    <img src="https://picsum.photos/800/400?random=2" alt="自定义活动封面">
+                </div>
+                <a href="t2-activity.html" class="activity-link">
+                    <div class="activity-link-text">自定义活动名称</div>
+                    <div class="activity-link-desc">
+                        可自定义活动描述，支持多行文本，适配移动端显示
+                    </div>
+                </a>
             </li>
+
+            <!-- 可继续添加更多活动项 -->
         </ul>
     </div>
 </body>
