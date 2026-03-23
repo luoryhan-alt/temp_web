@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日常趣事 | 火锅&学习&佛系续命</title>
+    <style>
+        /* 全局样式重置，和原有网站完全一致 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 头部：仅保留返回按钮，彻底删除所有导航链接 */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+        /* 返回按钮样式，保留原有交互 */
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+        .back-btn:hover {
+            color: #3498db;
+        }
+
+        /* 主要内容区，样式完全保留 */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 5%;
+        }
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+        .page-title h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .page-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* 日期卡片容器，样式完全保留 */
+        .date-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        /* 日期卡片样式，完全复用原有风格 */
+        .date-card {
+            width: 220px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .date-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        /* 日期卡片内容，样式完全保留 */
+        .date-content {
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+        .date-text {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+        }
+        .date-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        /* 跳转按钮，样式完全保留 */
+        .date-btn {
+            display: block;
+            width: 100%;
+            padding: 0.7rem;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .date-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* 页脚，样式完全保留 */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* 移动端适配，完全保留 */
+        @media (max-width: 768px) {
+            .date-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <!-- 仅保留返回按钮：返回首页，无任何多余导航 -->
+            <a href="luory.html" class="back-btn">← 返回首页</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-title">
+            <h1>每日趣事记录</h1>
+            <p>选择日期，查看当天的开心小事</p>
+        </div>
+
+        <!-- 日期筛选卡片列表，完全保留 -->
+        <div class="date-container">
+            <!-- 日期1：复制此卡片即可添加新日期 -->
+
+            <div class="date-card">
+                <div class="date-content">
+                    <div class="date-text">2026.03.23</div>
+                    <p class="date-desc">周一</p>
+                    <a href="daily/daily_20260323.html" class="date-btn">查看趣事</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-text">
+            © 二〇二六 从从帮备案号 | 法人: @Teacher Jia | 审批: @Minister Wan | 从从军委直属: @Commander Yu
+        </div>
+    </footer>
+</body>
+</html>

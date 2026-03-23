@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026.03.23 | 日常趣事 · TIME风格</title>
+    <style>
+        /* ====================== 全局样式：还原TIME杂志质感 ====================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* TIME杂志风格 专属刊头 */
+        .time-logo {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 3px solid #D71920;
+            margin-bottom: 0;
+            background: #ffffff;
+        }
+        .time-logo h1 {
+            font-family: "Times New Roman", serif;
+            font-size: 5rem;
+            font-weight: 900;
+            color: #D71920;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .time-logo p {
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 5px;
+        }
+
+        /* 页面背景：模拟杂志纸张的浅灰底色 */
+        body {
+            background-color: #f0f0f0;
+            color: #1a1a1a;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ====================== 顶部返回栏：仅保留返回按钮 ====================== */
+        header {
+            background-color: #ffffff;
+            padding: 1rem 5%;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* 返回按钮：TIME经典红强调，无多余样式 */
+        .back-btn {
+            color: #D71920;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+        .back-btn:hover {
+            opacity: 0.7;
+        }
+
+        /* ====================== 杂志内容区：模拟实体杂志纸张 ====================== */
+        .magazine-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 3rem 5%;
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        /* ====================== 刊头区：TIME风格标题层级 ====================== */
+        .issue-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        /* 日期标签：TIME经典红小标 */
+        .issue-date {
+            color: #D71920;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        /* 主标题：超大衬线字体，杂志封面级醒目 */
+        .issue-title {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        /* 副标题/引言：斜体浅灰，模拟杂志lead */
+        .issue-subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666666;
+            line-height: 1.5;
+        }
+
+        /* ====================== 主图+图注：TIME经典大图版式 ====================== */
+        .feature-image {
+            width: 100%;
+            height: auto;
+            margin: 2rem 0 0.5rem 0;
+            display: block;
+        }
+        .image-caption {
+            font-size: 0.9rem;
+            color: #666666;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid #D71920;
+        }
+
+        /* ====================== 副图+图注：场景补充，跨两栏排版 ====================== */
+        .sub-feature-image {
+            width: 100%;
+            height: auto;
+            margin: 1.5rem 0 0.5rem 0;
+            display: block;
+            column-span: all; /* 跨两栏，符合杂志阅读流 */
+        }
+        .sub-image-caption {
+            font-size: 0.85rem;
+            color: #666666;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #D71920;
+            column-span: all;
+        }
+
+        /* ====================== 聊天截图特殊样式：模拟手机截图质感 ====================== */
+        .chat-screenshot {
+            max-width: 400px;
+            margin: 1.5rem auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            column-span: all;
+        }
+        .chat-caption {
+            font-size: 0.85rem;
+            color: #666666;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            column-span: all;
+        }
+
+        /* ====================== 正文区：两栏分栏，还原杂志排版 ====================== */
+        .article-content {
+            column-count: 2;
+            column-gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+        .article-content p {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            letter-spacing: 0.3px;
+        }
+        /* 小标题样式 */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #D71920;
+            margin: 1.5rem 0 1rem 0;
+            column-span: all;
+        }
+        /* 首字下沉：TIME经典杂志排版细节 */
+        .article-content p:first-of-type::first-letter {
+            font-size: 3.5rem;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin-right: 0.5rem;
+            color: #D71920;
+        }
+
+        /* ====================== 引用块：突出式引言，TIME标志性设计 ====================== */
+        .pull-quote {
+            column-span: all;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #D71920;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            line-height: 1.4;
+        }
+
+        /* ====================== 补充内容区：单栏，适配小模块 ====================== */
+        .extra-content {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        .extra-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .extra-content p {
+            font-size: 1.1rem;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* ====================== 页脚：极简杂志风 ====================== */
+        footer {
+            max-width: 1200px;
+            margin: 0 auto 3rem auto;
+            padding: 0 5%;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ====================== 移动端适配：自动转为单栏 ====================== */
+        @media (max-width: 768px) {
+            .time-logo h1 {
+                font-size: 3rem;
+            }
+            .issue-title {
+                font-size: 2rem;
+            }
+            .article-content {
+                column-count: 1;
+                column-gap: 0;
+            }
+            .pull-quote {
+                font-size: 1.4rem;
+            }
+            .magazine-container {
+                padding: 1.5rem 5%;
+                margin: 1rem auto;
+            }
+            .chat-screenshot {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 【TIME杂志同款刊头】LUORY magazine -->
+    <div class="time-logo">
+        <h1>Luory</h1>
+        <p>magazine</p>
+    </div>
+
+    <!-- 顶部：仅保留返回按钮，路径适配daily/子目录 -->
+    <header>
+        <div class="header-container">
+            <a href="../daliy_stuff.html" class="back-btn">← 返回日期列表</a>
+        </div>
+    </header>
+
+    <!-- 杂志主体内容区 -->
+    <div class="magazine-container">
+        <!-- 刊头区：日期+主标题+副标题 -->
+        <div class="issue-header">
+            <div class="issue-date">2026年3月23日 · 周一 | 学期第四周</div>
+            <h1 class="issue-title">在四川留学的一天</h1>
+            <p class="issue-subtitle">一个人可以在外省真实的活过两年，但是代价是什么呢？</p>
+        </div>
+
+        <!-- 主图：夜晚操场全景（t1.jpg） -->
+        <img src="pic_20260323/t1.jpg" alt="夜晚操场全景" class="feature-image">
+        <p class="image-caption">图：2026年3月23日夜晚，操场跑道（摄影：@LuoryHan）</p>
+
+        <!-- 正文区：纯个人独白 + 分小标题 + 五图完整叙事 -->
+        <div class="article-content">
+            <p>第四周周一，常规开课日，撞上一桩荒诞事。亏得这桩乌龙，我成功的把自己的电动车彻底搞没电了。得到一个朴素而扎实的结论：昨天没看到微信消息。</p>
+
+            <h3 class="section-title">一、清晨的九教：教室外面一片死寂</h3>
+            <p>一早赶去上代码到实物这门课，推门发现门没开，门口一个人也没有。没记错时间，没走错教室。点开微信群，看见老师昨晚九点发的停课通知。</p>
+            <p>我只能说，这是典型的没看到消息，不是什么新鲜事，不是意外。非常的符合我的人设. Whatever, I Just Bounce。</p>
+
+            <!-- 核心“万恶之源”聊天截图（t5.jpg） -->
+            <img src="pic_20260323/t5.jpg" alt="微信停课通知截图" class="chat-screenshot">
+            <p class="chat-caption">图：万恶之源——一条被我完美错过的通知（截图：@LuoryHan）</p>
+
+            <h3 class="section-title">二、枯木新芽：自然现象，不必附会诗意</h3>
+            <p>白跑一趟。在楼外，看见老树枯枝上冒新芽，拍了两张。视觉反差有意思：老木质变，新芽相变，自然规律，科学现象，没那么多风花雪月。</p>
+            <p>拍下来。客观事物好像不会有主观情绪，世界按规则运行，但是人却赋予了事情意义，我想人工智能再优化，也无法成为意义本身，优化的方向永远是人定义的。</p>
+            <p>我想,我们学计算机的，就是要不断地学习，我认为不应该把计算机和“代码”code联系在一起，也不能把计算机和巨大的冯诺依曼体系计算机联系在一起。（这只是表象罢了）何况大家都知道学计算机不是修电脑。我认为，我们这一代计科人，要明白，计算机代表的不应该是电脑，不是写代码，不是任何的这个时代的看似与computer science绑定了的技术，它永远代表的是最先进的生产力，最前沿的科技。而我们要做的，是将这门科学当作科学，学习前沿的科技，而且终生不停歇，这将是理想主义的再一次现身世界，一次浪漫的存活。</p>
+
+            <!-- 副图：清晨枯木新芽（t3.jpg + t4.jpg），双图叙事 -->
+            <img src="pic_20260323/t3.jpg" alt="教室外枯木新芽" class="sub-feature-image">
+            <p class="sub-image-caption">图：枯枝新芽，仅为自然相变记录，无额外抒情（摄影：@LuoryHan）</p>
+            <img src="pic_20260323/t4.jpg" alt="枯木新芽与红白建筑" class="sub-feature-image">
+            <p class="sub-image-caption">图：环境记录照，客观存档，不搞文艺创作（摄影：@LuoryHan）</p>
+
+            <h3 class="section-title">三、新生：重新做人</h3>
+            <p>我觉得说“重新做人”，有点偏自嘲了。前三年对自己要求有点宽松。没把全部精力砸在课内，倒也不算亏：社交、人际、强化学习、深度学习、AI技术、科研尝试，该摸的都摸了，算是多元化试错。</p>
+            <p>但试错该结束了。大三已到尾声，窗口期不多了，也有些迷茫。觉醒，不是感动自己，是清算：止损，纠偏，集中资源，拿剩下的，别计较之前的。</p>
+            
+            <!-- 核心金句引用块 -->
+            <blockquote class="pull-quote">
+                “我来这里不是享乐的，是来磨练自己的。”
+            </blockquote>
+
+            <h3 class="section-title">四、离散数学：冗余题老，大一遗留的圣遗物</h3>
+            <p>今日只上网络安全、视觉计算两门课，剩下时间全砸在离散数学上了。冲突选课，自学硬扛，没什么好抱怨的。都是自己选的路，必须要按规则来搞。</p>
+            <p>第三章习题，说穿了不难，就是老、旧、冗余，书写量巨大，思考量偏低，属于体力活。跟物理理论比，简直是降维打击。但考试要考，作业要交，只能按标准输出。抱怨偷懒都是空话，完成任务才是第一。</p>
+
+            <h3 class="section-title">五、夜跑：对自己狠，是进社会前最低成本的试错</h3>
+            <p>中午食堂吃的，晚上一碗泡面解决。感觉饿了，直接去操场：三公里六圈，练了会上肢力量。对自己一条要求：怎么狠怎么来。</p>
+            <p>来上学不是度假。乐趣可以暂时封存，问题必须逐个解决，只要干不死，就往死里干。干就完了兄弟们。拳击要捡回来，一方面是为了恢复身体控制力与执行力以及自律，一方面是我对自己的基本要求。</p>
+
+            <!-- 副图：夜晚操场高杆灯（t2.jpg），呼应夜跑场景 -->
+            <img src="pic_20260323/t2.jpg" alt="夜晚操场高杆灯" class="sub-feature-image">
+            <p class="sub-image-caption">图：夜跑照明，物理空间与精神状态同步点亮（摄影：@LuoryHan）</p>
+
+            <p>什么享受、什么放松。现阶段的核心任务是解决问题，我需要什么，就去做什么，只要还活着，就还有做事的希望。在我没死之前，我绝对不会停下来。想那么多没用，动起来，比什么都强。</p>
+
+            <h3 class="section-title">六、回望高三：单目标优化 vs 多目标决策</h3>
+            <p>跑着步就想起高三，那时候很自律，也很快乐，不觉得痛苦。也许高三是单目标优化问题，路径唯一，梯度清晰，只要执行就行。</p>
+            <p>大学是多目标决策，维度爆炸，约束模糊，自然容易迷茫。不是变弱了，是问题复杂度升级了。</p>
+            <p>怀念归怀念，不必纠结，管他这那的，适应新环境，干就完了。至于未来怎么走，先把眼前的事做完。不是来找路，是得要自己凿出一条路来。遇山开山，遇水架桥，神挡杀神，佛挡杀佛，我就不相信，除非我死了，世界上有跨不过的坎，人有办不成的事。</p>
+
+        </div>
+
+        <!-- 补充内容区：当日国际大事 -->
+        <div class="extra-content">
+            <h3 class="extra-title">当日国际大事 | 2026.03.23</h3>
+            <p>中东冲突持续升级，美以联军对伊朗境内目标实施新一轮打击，伊朗方面同步展开对等反击行动。<br>
+            美国联邦政府资金谈判陷入僵局，部分联邦机构运营受限，政府停摆风险进一步加剧。<br>
+            欧盟召开紧急峰会，就应对域外产业政策冲击及区域能源安全问题展开磋商。<br>
+            霍尔木兹海峡航运安全局势紧张，国际原油价格大幅波动，全球能源市场承压。<br>
+            以色列军方扩大对黎巴嫩南部目标打击范围，地区安全局势持续恶化。<br>
+            全球主要经济体财长计划召开闭门会议，商讨稳定国际能源与金融市场的协同方案。</p>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>© 2026 LuoryHan · 日常趣事</p>
+    </footer>
+</body>
+</html>
