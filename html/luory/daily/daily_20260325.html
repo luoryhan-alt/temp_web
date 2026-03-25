@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026.03.25 | 日常纪实 · TIME风格</title>
+    <style>
+        /* ====================== 全局样式：还原TIME杂志质感 ====================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* TIME杂志风格 专属刊头 */
+        .time-logo {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 3px solid #D71920;
+            margin-bottom: 0;
+            background: #ffffff;
+        }
+        .time-logo h1 {
+            font-family: "Times New Roman", serif;
+            font-size: 5rem;
+            font-weight: 900;
+            color: #D71920;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .time-logo p {
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 5px;
+        }
+
+        /* 页面背景：模拟杂志纸张的浅灰底色 */
+        body {
+            background-color: #f0f0f0;
+            color: #1a1a1a;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ====================== 顶部返回栏：仅保留返回按钮 ====================== */
+        header {
+            background-color: #ffffff;
+            padding: 1rem 5%;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* 返回按钮：TIME经典红强调，无多余样式 */
+        .back-btn {
+            color: #D71920;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+        .back-btn:hover {
+            opacity: 0.7;
+        }
+
+        /* ====================== 杂志内容区：模拟实体杂志纸张 ====================== */
+        .magazine-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 3rem 5%;
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        /* ====================== 刊头区：TIME风格标题层级 ====================== */
+        .issue-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        /* 日期标签：TIME经典红小标 */
+        .issue-date {
+            color: #D71920;
+            size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        /* 主标题：超大衬线字体，杂志封面级醒目 */
+        .issue-title {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        /* 副标题/引言：斜体浅灰，模拟杂志lead */
+        .issue-subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666666;
+            line-height: 1.5;
+        }
+
+        /* ====================== 主图+图注：TIME经典大图版式 ====================== */
+        .feature-image {
+            width: 100%;
+            height: auto;
+            margin: 2rem 0 0.5rem 0;
+            display: block;
+        }
+        .image-caption {
+            font-size: 0.9rem;
+            color: #666666;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid #D71920;
+        }
+
+        /* ====================== 副图+图注：场景补充，跨两栏排版 ====================== */
+        .sub-feature-image {
+            width: 100%;
+            height: auto;
+            margin: 1.5rem 0 0.5rem 0;
+            display: block;
+            column-span: all; /* 跨两栏，符合杂志阅读流 */
+        }
+        .sub-image-caption {
+            font-size: 0.85rem;
+            color: #666666;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #D71920;
+            column-span: all;
+        }
+
+        /* ====================== 聊天截图特殊样式：模拟手机截图质感 ====================== */
+        .chat-screenshot {
+            max-width: 400px;
+            margin: 1.5rem auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            column-span: all;
+        }
+        .chat-caption {
+            font-size: 0.85rem;
+            color: #666666;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            column-span: all;
+        }
+
+        /* ====================== 正文区：两栏分栏，还原杂志排版 ====================== */
+        .article-content {
+            column-count: 2;
+            column-gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+        .article-content p {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            letter-spacing: 0.3px;
+        }
+        /* 小标题样式 */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #D71920;
+            margin: 1.5rem 0 1rem 0;
+            column-span: all;
+        }
+        /* 首字下沉：TIME经典杂志排版细节 */
+        .article-content p:first-of-type::first-letter {
+            font-size: 3.5rem;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin-right: 0.5rem;
+            color: #D71920;
+        }
+
+        /* ====================== 引用块：突出式引言，TIME标志性设计 ====================== */
+        .pull-quote {
+            column-span: all;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #D71920;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            line-height: 1.4;
+        }
+
+        /* ====================== 补充内容区：单栏，适配小模块 ====================== */
+        .extra-content {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        .extra-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .extra-content p {
+            font-size: 1.1rem;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* ====================== 页脚：极简杂志风 ====================== */
+        footer {
+            max-width: 1200px;
+            margin: 0 auto 3rem auto;
+            padding: 0 5%;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* ====================== 移动端适配：自动转为单栏 ====================== */
+        @media (max-width: 768px) {
+            .time-logo h1 {
+                font-size: 3rem;
+            }
+            .issue-title {
+                font-size: 2rem;
+            }
+            .article-content {
+                column-count: 1;
+                column-gap: 0;
+            }
+            .pull-quote {
+                font-size: 1.4rem;
+            }
+            .magazine-container {
+                padding: 1.5rem 5%;
+                margin: 1rem auto;
+            }
+            .chat-screenshot {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 【TIME杂志同款刊头】LUORY magazine -->
+    <div class="time-logo">
+        <h1>Luory</h1>
+        <p>magazine</p>
+    </div>
+
+    <!-- 顶部：仅保留返回按钮 -->
+    <header>
+        <div class="header-container">
+            <a href="../daily_stuff.html" class="back-btn">← 返回日期列表</a>
+        </div>
+    </header>
+
+    <!-- 杂志主体内容区 -->
+    <div class="magazine-container">
+        <!-- 刊头区：日期+主标题+副标题 -->
+        <div class="issue-header">
+            <div class="issue-date">2026年3月25日 · 周三 | 学期第4周</div>
+            <h1 class="issue-title">2026年3月25日 学习攻坚与亲情助力纪实</h1>
+            <p class="issue-subtitle">深耕专业学习 化解生活难题 筑牢公共安全意识 感受海外姑姑与uncle的温暖支持</p>
+        </div>
+
+        <!-- 主图 -->
+        <img src="pic_20260325/t7.jpg" alt="当日学习纪实" class="feature-image">
+        <p class="image-caption">图：2026年3月25日日常纪实（摄影：@LuoryHan）</p>
+
+        <!-- 正文区：央视新闻硬核风格 -->
+        <div class="article-content">
+            <p>2026年3月25日，严格按照学习计划推进各项任务，聚焦专业课程实践、同伴互助、智能工具办理、数学能力提升及公共安全观察，获海外姑姑与uncle倾力相助，全天任务有序开展，各项工作取得阶段性成效。</p>
+
+            <h3 class="section-title">一、上午：软件工程课程设计初创阶段 求教专业知识夯实基础</h3>
+            <p>上午，软件工程课程设计进入初创起步阶段，为夯实项目开发基础，主动向同组王同学请教学习。该同学精通计算机网络与软件工程领域专业知识，有着十分丰富的软件项目开发经验。</p>
+            <p>重点咨询静态页面接入数据库的核心技术逻辑，经实操验证与排查。发现技术瓶颈可能在于没有绑定银行卡，账户权限限制云服务器无法完成域名绑定与数据库接入操作，当前网站仅能维持静态页面形态。但暂不进行深入的探究，将使其进入维持现状的阶段足矣。</p>
+
+            <h3 class="section-title">二、中午：聚餐交流互助 化解同伴情绪困扰</h3>
+            <p>中午，与俞、万二人共同就餐，开展交流沟通工作。期间获悉，万部长因班级团支书工作失误，错失优秀团员这个奖项，这的确让人感到沮丧与气愤。</p>
+            
+            <img src="pic_20260325/t2.jpg" alt="中午聚餐" class="sub-feature-image">
+            <p class="sub-image-caption">图：中午聚餐纪录（摄影：@LuoryHan）</p>
+
+            <p>该事件虽暂时无实质性重大影响，但因他人工作失误导致自身权益受损，引发万部长情绪波动。经现场充分沟通、理性探讨，希望万部长能确定解决方案，疏导负面情绪，恢复平稳心态。</p>
+            <p>在此，对其班级团支书的不负责任与由于自身过失导致的有损他人的行为，我方发出严正谴责，并敦促，尽快减小万的损失。</p>
+
+            <h3 class="section-title">三、下午：海外姑姑与uncle倾力相助 开通稳定的ChatGPT PLUS智能体</h3>
+            <p>下午，为适应时代发展与ai智能体的实质演变趋势，提升学习与开发工作效率，计划使用ChatGPT PLUS级别的高级AI辅助工具。鉴于国内中间商服务可靠性不足，有被查封的风险，并且服务质量层次不齐，大有“挂羊头卖狗肉”的中转商。由于此领域实则在国内，属于尚未明确规范的灰色地带，特向在海外的姑姑求助，姑姑第一时间响应，主动联系在法国的表叔协助办理相关正版事宜。</p>
+            <p>经多方协调，有望打通VISA卡正规支付途径，该办理渠道安全稳定、可信度高，相较国内中间商优势显著，充分体现了海外亲人的牵挂与支持。uncle承诺为我承担全部费用。在此由衷鸣谢，并致以最高的敬意。</p>
+
+            <!-- 聊天截图 -->
+            <img src="pic_20260325/t5.jpg" alt="与姑姑的沟通记录" class="chat-screenshot">
+            <p class="chat-caption">图：与海外姑姑沟通智能服务办理事宜的对话记录-1（摄影：@LuoryHan）</p>
+
+            <p>姑姑在沟通中充分肯定了网站记录的学习与生活点滴，直言“看到你在努力，也很自律，学习与生活的点滴都活灵活现，仿佛我们也一起参与了”，字里行间满是欣慰与牵挂；同时贴心提醒网站用词需注意，避免让亲人产生压力，并送上“学业有成”的真挚祝福，跨越山海的亲情温暖直抵人心。</p>
+            <img src="pic_20260325/t6.jpg" alt="与姑姑的沟通记录" class="chat-screenshot">
+            <p class="chat-caption">图：与海外姑姑沟通智能服务办理事宜的对话记录-2（摄影：@LuoryHan）</p>
+
+
+
+            <h3 class="section-title">四、数学专项攻坚 能力实现质的飞跃</h3>
+            <p>完成智能工具办理相关事宜后，全力攻坚离散数学证明类题型，开展高强度专项练习。经过一下午的攻坚克难，逻辑推理能力、证明解题能力实现质的飞跃，对数学基础概念的理解与应用水平大幅提升，为后续专业学习筑牢根基。</p>
+            <!-- 副图1 -->
+            <img src="pic_20260325/t1.jpg" alt="离散数学练习" class="sub-feature-image">
+            <p class="sub-image-caption">图：离散数学专项攻坚现场（摄影：@LuoryHan）</p>
+
+
+            <!-- 核心金句引用块 -->
+            <blockquote class="pull-quote">
+                “深耕专业方能行稳致远，亲情助力更可勇毅前行，关注安全方可守护平安。”
+            </blockquote>
+
+            <h3 class="section-title">五、晚间：观察校园周边环境 警惕公共安全隐患</h3>
+            <p>完成当日学习任务后，前往学校门口购置食品，现场观察到校园周边流动摊贩存在重大公共安全隐患。</p>
+            <p>各类流动小吃摊以三轮车为载体，违规存放燃气罐作业，一旦发生燃气泄漏、爆炸等事故，将严重威胁师生人身安全，后果不堪设想，公共安全监管亟待加强。</p>
+
+            <!-- 副图2 -->
+            <img src="pic_20260325/t3.jpg" alt="校园周边摊贩" class="sub-feature-image">
+            <p class="sub-image-caption">图：校园周边流动摊贩安全观察（摄影：@LuoryHan）</p>
+
+            <h3 class="section-title">六、当日工作成效总结与后续规划</h3>
+            <p>当日各项任务按计划落地执行，专业学习、技术排查、同伴互助、安全观察等工作均取得预期效果，更获海外姑姑与uncle的倾力支持，智能工具办理渠道稳妥可靠，数学能力显著提升。</p>
+            <p>下一步，将持续强化离散数学学习，巩固提升解题能力；持续关注公共安全，坚守安全底线；同时铭记亲人嘱托，规范网站用词，以严谨务实态度推进各项工作，不负大家的殷切期望。</p>
+
+        </div>
+
+        <!-- 补充内容区：当日国际新闻 -->
+        <div class="extra-content">
+            <h3 class="extra-title">当日国际新闻 | 2026.03.25</h3>
+            <p>1. 中东局势持续升级，伊朗布什尔核电站遭美以联合袭击，伊朗强硬回应并否认与美方存在谈判接触；<br>
+            2. 日本自卫队官员强闯中国驻日使馆，中方提出严正交涉，日方已逮捕涉事人员村田晃大；<br>
+            3. 全球南方金融家论坛在北京开幕，30余国代表共商绿色金融合作，打造包容可持续金融生态；<br>
+            4. 俄乌冲突加剧，俄军单日动用近千架无人机袭击乌克兰，造成至少4人死亡、数十人受伤；<br>
+            5. 避险情绪推高贵金属价格，国际金价银价大幅飙升，国内金饰克价单日涨幅超60元。</p>
+        </div>
+    </div>
+
+    <!-- 杂志主体内容区 -->
+    <div class="magazine-container">
+        <!-- 刊头区：日期+主标题+副标题 -->
+        <div class="issue-header">
+            <div class="issue-date">Wednesday, March 25, 2026 | Week 4 of the Semester</div>
+            <h1 class="issue-title">March 25, 2026: A Record of Academic Endeavors and Family Support</h1>
+            <p class="issue-subtitle">Striving for Professional Excellence, Resolving Life Challenges, Enhancing Public Safety Awareness, and Feeling the Warm Support from Overseas Family</p>
+        </div>
+
+        <!-- 主图 -->
+        <img src="pic_20260325/t7.jpg" alt="Daily Study Record" class="feature-image">
+        <p class="image-caption">Photo: Daily Record of March 25, 2026 (Photographed by @LuoryHan)</p>
+
+        <!-- 正文区：纯英文正式纪实风格 -->
+        <div class="article-content">
+            <p>On March 25, 2026, all tasks were carried out in strict accordance with the study plan, focusing on professional curriculum practice, peer mutual assistance, the application of intelligent tools, the improvement of mathematical abilities, and public safety observation. With the full support of my aunt and uncle overseas, all daily tasks proceeded in an orderly manner, and phased results were achieved in all work.</p>
+
+            <h3 class="section-title">1. Morning: Initial Stage of Software Engineering Project & Learning from Professional Peers</h3>
+            <p>In the morning, the software engineering curriculum design entered the initial startup stage. To consolidate the foundation of project development, I took the initiative to consult and learn from classmate Wang in the same group. Classmate Wang is proficient in professional knowledge in the fields of computer networks and software engineering, and has extensive experience in software project development.</p>
+
+            <p>I focused on consulting the core technical logic of connecting static pages to the database. Through practical verification and troubleshooting, it was found that the technical bottleneck may lie in the failure to bind a bank card; account permission restrictions prevent the cloud server from completing domain name binding and database access operations, so the current website can only maintain a static page form. However, in-depth research will not be conducted for the time being, and it is sufficient to maintain the current status.</p>
+
+            <h3 class="section-title">2. Noon: Gathering & Communication to Ease Emotional Distress</h3>
+            <p>At noon, I had dinner with Yu and Wan and conducted communication and exchanges. During this period, I learned that Minister Wan missed the award of Excellent League Member due to the work mistake of the class League branch secretary, which is indeed frustrating and angering.</p>
+            
+            <img src="pic_20260325/t2.jpg" alt="Noon Gathering" class="sub-feature-image">
+            <p class="sub-image-caption">Photo: Noon Gathering Record (Photographed by @LuoryHan)</p>
+
+            <p>Although the incident has no substantial and significant impact for the time being, the infringement of his rights and interests due to others' work mistakes has caused emotional fluctuations for Minister Wan. Through full on-site communication and rational discussion, I hope Minister Wan can determine a solution, channel negative emotions, and restore a stable state of mind.</p>
+
+            <p>Hereby, we solemnly condemn the irresponsibility of the class League branch secretary and the behavior that harms others caused by his own negligence, and urge him to minimize Wan's losses as soon as possible.</p>
+
+            <h3 class="section-title">3. Afternoon: Overseas Family Support for Stable ChatGPT PLUS Subscription</h3>
+            <p>In the afternoon, to adapt to the development of the times and the evolution trend of AI agents, and improve the efficiency of learning and development work, I planned to use the advanced AI-assisted tool of ChatGPT PLUS. In view of the insufficient reliability of domestic intermediaries, the risk of being sealed up, and the uneven service quality with many unscrupulous intermediaries, this field is actually a gray area without clear regulations in China. Therefore, I turned to my aunt overseas for help, who responded immediately and took the initiative to contact my cousin in France to assist in handling the relevant genuine procedures.</p>
+
+            <p>Through multi-party coordination, it is expected to open up a formal payment channel via VISA card. This channel is safe, stable and highly credible, with significant advantages over domestic intermediaries, fully reflecting the care and support of overseas relatives. My uncle promised to bear all the costs for me. I hereby express my sincere gratitude and highest respect.</p>
+
+            <!-- 聊天截图 -->
+            <img src="pic_20260325/t5.jpg" alt="Chat with Aunt" class="chat-screenshot">
+            <p class="chat-caption">Photo: Chat Record 1 with Overseas Aunt for AI Service (Photographed by @LuoryHan)</p>
+
+            <p>During the communication, my aunt fully affirmed the bits and pieces of study and life recorded on the website, saying frankly, "Seeing your efforts and self-discipline, the details of study and life are vivid, as if we are also participating together". Every word was full of relief and concern. At the same time, she kindly reminded me to pay attention to the wording of the website to avoid putting pressure on relatives, and sent her sincere wish of "academic success". The warmth of family affection across mountains and seas touched the heart directly.</p>
+            <img src="pic_20260325/t6.jpg" alt="Chat with Aunt" class="chat-screenshot">
+            <p class="chat-caption">Photo: Chat Record 2 with Overseas Aunt for AI Service (Photographed by @LuoryHan)</p>
+
+            <h3 class="section-title">4. Intensive Discrete Mathematics Training & Qualitative Improvement of Abilities</h3>
+            <p>After completing the relevant procedures for the intelligent tool, I fully focused on tackling the proof problems of discrete mathematics and carried out high-intensity special practice. After a whole afternoon of hard work, my logical reasoning ability and proof-solving ability achieved a qualitative leap, and my understanding and application of basic mathematical concepts were greatly improved, laying a solid foundation for subsequent professional learning.</p>
+            <!-- 副图1 -->
+            <img src="pic_20260325/t1.jpg" alt="Discrete Mathematics Practice" class="sub-feature-image">
+            <p class="sub-image-caption">Photo: Discrete Mathematics Training Session (Photographed by @LuoryHan)</p>
+
+            <!-- 核心金句引用块 -->
+            <blockquote class="pull-quote">
+                "Only by delving deep into professionalism can we go steadily and far; with family support, we can move forward bravely; only by focusing on safety can we guard peace."
+            </blockquote>
+
+            <h3 class="section-title">5. Evening: Campus Surroundings Inspection & Public Safety Hazard Alert</h3>
+            <p>After completing the day's study tasks, I went to the school gate to buy food, and observed major public safety hazards among mobile vendors around the campus on site.</p>
+
+            <p>Various mobile snack stalls use tricycles as carriers and illegally store gas tanks for operation. Once accidents such as gas leakage or explosion occur, the personal safety of teachers and students will be seriously threatened with unthinkable consequences, so public safety supervision needs to be strengthened urgently.</p>
+
+            <!-- 副图2 -->
+            <img src="pic_20260325/t3.jpg" alt="Campus Vendors" class="sub-feature-image">
+            <p class="sub-image-caption">Photo: Safety Inspection of Mobile Vendors Around Campus (Photographed by @LuoryHan)</p>
+
+            <h3 class="section-title">6. Daily Summary & Future Plans</h3>
+            <p>All tasks of the day were implemented as planned, and expected results were achieved in professional learning, technical troubleshooting, peer mutual assistance, safety observation and other work. With the full support of my aunt and uncle overseas, the handling channel for intelligent tools was stable and reliable, and my mathematical ability was significantly improved.</p>
+
+            <p>In the next step, I will continue to strengthen the study of discrete mathematics to consolidate and improve my problem-solving ability; keep paying attention to public safety and adhere to the bottom line of safety; at the same time, keep in mind the exhortations of relatives, standardize the wording of the website, and promote all work with a rigorous and pragmatic attitude to live up to everyone's ardent expectations.</p>
+
+        </div>
+
+        <!-- 补充内容区：当日国际新闻 -->
+        <div class="extra-content">
+            <h3 class="extra-title">International News | 2026.03.25</h3>
+            <p>1. The situation in the Middle East continues to escalate. The Bushehr Nuclear Power Plant in Iran was attacked by a joint US-Israeli operation, and Iran responded firmly while denying any contact with the US for negotiations;<br>
+            2. A Japanese Self-Defense Force official forcibly broke into the Chinese Embassy in Japan. China lodged solemn representations, and Japan has arrested the suspect Murata Koda;<br>
+            3. The Global South Financiers Forum opened in Beijing. Representatives from more than 30 countries discussed green finance cooperation to build an inclusive and sustainable financial ecosystem;<br>
+            4. The Russia-Ukraine conflict intensified. The Russian army launched nearly 1,000 drones to attack Ukraine in a single day, killing at least 4 people and injuring dozens;<br>
+            5. Risk aversion pushed up precious metal prices. International gold and silver prices soared sharply, with the domestic gold jewelry price per gram rising by more than 60 yuan in a single day.</p>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>© 2026 LuoryHan · 日常纪实</p>
+    </footer>
+</body>
+</html>
