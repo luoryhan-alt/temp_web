@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026.04.17 | 休课不休战 / No Class, No Standstill · TIME风格</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            color: #1a1a1a;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .time-logo {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 3px solid #D71920;
+            background: #ffffff;
+        }
+        .time-logo h1 {
+            font-family: "Times New Roman", serif;
+            font-size: 5rem;
+            font-weight: 900;
+            color: #D71920;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .time-logo p {
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 5px;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 1rem 5%;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .back-btn {
+            color: #D71920;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+        .back-btn:hover {
+            opacity: 0.7;
+        }
+
+        .magazine-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 3rem 5%;
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .issue-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        .issue-date {
+            color: #D71920;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .issue-title {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .issue-subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666666;
+            line-height: 1.5;
+        }
+
+        .feature-image,
+        .sub-feature-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .feature-image {
+            margin: 2rem 0 0.5rem 0;
+        }
+        .sub-feature-image {
+            margin: 1.5rem 0 0.5rem 0;
+            column-span: all;
+        }
+
+        .image-caption,
+        .sub-image-caption {
+            color: #666666;
+            font-style: italic;
+            padding-left: 0.5rem;
+        }
+        .image-caption {
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid #D71920;
+        }
+        .sub-image-caption {
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            border-left: 2px solid #D71920;
+            column-span: all;
+        }
+
+        .article-content {
+            column-count: 2;
+            column-gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+        .article-content p {
+            font-size: 1.08rem;
+            color: #1a1a1a;
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            letter-spacing: 0.2px;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #D71920;
+            margin: 1.5rem 0 1rem 0;
+            column-span: all;
+        }
+        .first-paragraph::first-letter {
+            font-size: 3.5rem;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin-right: 0.5rem;
+            color: #D71920;
+        }
+
+        .pull-quote {
+            column-span: all;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #D71920;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            line-height: 1.4;
+        }
+
+        .extra-content {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        .extra-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .extra-content p {
+            font-size: 1.08rem;
+            color: #333;
+            line-height: 1.75;
+        }
+
+        .lang-divider {
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+            text-align: center;
+            font-size: 1rem;
+            color: #D71920;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            max-width: 1200px;
+            margin: 0 auto 3rem auto;
+            padding: 0 5%;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .time-logo h1 {
+                font-size: 3rem;
+            }
+            .issue-title {
+                font-size: 2rem;
+            }
+            .article-content {
+                column-count: 1;
+                column-gap: 0;
+            }
+            .pull-quote {
+                font-size: 1.4rem;
+            }
+            .magazine-container {
+                padding: 1.5rem 5%;
+                margin: 1rem auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="time-logo">
+        <h1>Luory</h1>
+        <p>magazine</p>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <a href="../daily_stuff.html" class="back-btn">← 返回日期列表</a>
+        </div>
+    </header>
+
+    <!-- 中文版 -->
+    <div class="magazine-container">
+        <div class="issue-header">
+            <div class="issue-date">2026年4月17日 · 周五 | 周内调度日</div>
+            <h1 class="issue-title">休课不休战：一场被临时改写的周五</h1>
+            <p class="issue-subtitle">原定课程临时变化，自习、上课、补给与夜间聚餐依次展开。计划发生偏转，但节奏始终没有失控。</p>
+        </div>
+
+        <img src="./pic_20260417/t1.jpg" alt="软件系统课程设计课现场" class="feature-image">
+        <p class="image-caption">图：软件系统课程设计课现场，代码、屏幕与课堂秩序同时推进（摄影：@LuoryHan）</p>
+
+        <div class="article-content">
+            <p class="first-paragraph">4月17日，周五。早上8点10分，一天的工作准备已经展开。原计划需要外出完成“智能嵌入式芯片”与“习近平新时代中国特色社会主义概论”两门课程，但前者因教师出差停课，后者又处于实践周暂停授课。课表临时变化，时间随即被重新分配，这一天也从“按表上课”迅速切换为“主动调度”。</p>
+
+            <h3 class="section-title">一、计划变化，学习任务立即顶上</h3>
+            <p>对于学生来说，真正考验执行力的，往往不是课多，而是既定秩序被打断之后，是否还能迅速接管时间。周五上午，外部课程安排被取消，表面上像是腾出了一段空档；但从实际推进情况看，这更像是一场完全依靠个人组织与执行的自主作战。</p>
+            <p>从上午到中午，云计算相关作业成为核心任务。Docker 容器、云计算节点以及相关架构之间的关系逐步理清，YAML 文件的基本写法也完成了第一轮摸索与掌握。任务并不轻，但方向开始清楚，结构也开始成形。</p>
+
+            <h3 class="section-title">二、效率推进之中，干扰同步出现</h3>
+            <p>上午推进并非一路顺畅。工具体验问题与外部环境噪音相继叠加，对效率形成了明显牵制。笔记软件在录音文件管理上的交互逻辑混乱，造成额外时间损耗；而楼上或隔壁持续传来的高音量音乐与唱歌声，也不断打断专注状态。</p>
+            <p>但真正决定全天质量的，不是有没有干扰，而是在干扰出现之后，节奏是否失守。就结果而言，任务没有停摆，推进仍在继续，上午依然完成了关键知识点的梳理。</p>
+
+            <img src="./pic_20260417/t2.jpg" alt="返程后吃泡面" class="sub-feature-image">
+            <p class="sub-image-caption">图：上课回来后的简易补给，一桶泡面构成了迟到的午餐（摄影：@LuoryHan）</p>
+
+            <h3 class="section-title">三、午后转场，课程与补给并线进行</h3>
+            <p>下午1点43分，云计算任务还剩少量加分项未收尾，而下午2点的软件系统课程设计课已经临近。此时，中饭甚至还没有来得及解决。现实不会因为准备不足而暂停推进，于是节奏只能继续向前，先完成转场，再处理补给。</p>
+            <p>课程结束回到住处，时间来到下午4点25分。火腿肠、泡面与一瓶水，组成了这顿极为务实的中饭。它并不丰盛，却起到了最直接的作用：补充体力，接续晚间安排。由于晚饭时间距离很近，吃完之后还专门考虑通过锻炼消耗一部分能量，为晚上的聚餐腾出空间。</p>
+
+            <img src="./pic_20260417/t3.jpg" alt="从火锅店离开前往隔壁商店" class="sub-feature-image">
+            <p class="sub-image-caption">图：晚间聚餐过程中出现临时转场，人员从火锅店方向转向隔壁商店（摄影：@LuoryHan）</p>
+
+            <img src="./pic_20260417/t4.jpg" alt="商店付款现场" class="sub-feature-image">
+            <p class="sub-image-caption">图：临时采购现场，食材在自助收银台完成结算（摄影：@LuoryHan）</p>
+
+            <h3 class="section-title">四、晚间插曲：从聚餐到临时采购</h3>
+            <p>到了夜间，整天的气氛发生明显变化。周五本就是一周之中难得的缓冲带，晚上原本就安排与同学一起外出吃饭、放松。火锅局开始之后，现场很快出现了一个小插曲：一行人临时决定前往隔壁商店采购部分食材，晚间聚餐因此短暂分流，原本单一的“吃饭流程”被改写成一次带有行动感的转场过程。</p>
+            <p>这一段过程并不复杂，却很有现场张力。有人负责快步带路，有人负责拿取商品，有人负责在付款点迅速完成结账。短时间内，节奏明显加快，行动配合也比平时更紧凑，原本平常的晚饭因此多出了一层临场感。</p>
+
+            <img src="./pic_20260417/t5.jpg" alt="采购完成后跑回火锅店" class="sub-feature-image">
+            <p class="sub-image-caption">图：采购结束后迅速折返，晚间行动节奏被明显拉高（摄影：@LuoryHan）</p>
+
+            <blockquote class="pull-quote">
+                “计划可以变化，节奏不能塌。”
+            </blockquote>
+
+            <h3 class="section-title">五、夜间收束：一场真正意义上的周五放松</h3>
+            <p>当采购结束、人员折返，夜晚终于重新回到“吃饭”本身。火锅、交谈、台球，再加上后续买东西回程，这一整套流程构成了周五晚上的放松段落。与白天在自习、课程、噪音和工具问题之间不断周旋相比，夜间的状态显然轻快得多。</p>
+            <p>但这种放松并不是毫无边界的散漫，而是高压运行之后的一次主动收束。周五晚上可以休整，是因为周六、周日还要重新投入工作与学习。正因如此，这顿饭、这场局、这一次外出，才更像是一段短暂但有效的缓冲，而不是彻底停摆。</p>
+
+            <img src="./pic_20260417/t6.jpg" alt="吃火锅现场" class="sub-feature-image">
+            <p class="sub-image-caption">图：火锅局进入实质阶段，桌面上的痕迹记录了这一晚最放松的一段时间（摄影：@LuoryHan）</p>
+
+            <h3 class="section-title">六、全天总结：被改写的一天，仍然保持向前</h3>
+            <p>回看这一天，最鲜明的特点不是“轻松”，而是“调度”。课程取消并没有带来彻底闲置，反而把主动权直接交回到自己手里；云计算任务虽然伴随烦躁和干扰，却还是取得了实质性推进；下午的上课与补给虽然仓促，但没有断线；夜间的聚餐与活动，则把整天的紧绷状态拉回到了可控区间。</p>
+            <p>这就是周五真正的价值：它允许你喘口气，但不允许你失去方向。该推进的任务继续推进，该释放的压力适度释放。一天结束时，留下来的不是混乱，而是一种很明确的判断——哪怕计划被临时改写，节奏依然要掌握在自己手里。</p>
+        </div>
+
+        <div class="extra-content">
+            <h3 class="extra-title">当日简报 | 2026.04.17</h3>
+            <p>
+                上午，原定课程变化，学习任务转入自主推进，云计算知识框架取得关键进展。<br>
+                下午，软件系统课程设计课按时完成，返程后以最简方式完成补给，继续衔接晚间安排。<br>
+                夜间，聚餐、采购、返程与火锅构成整天最轻松的一段，也为周末前的短暂休整画上句号。<br>
+                结论明确：外部计划可以变化，但个人节奏不能失守。
+            </p>
+        </div>
+    </div>
+
+    <div class="lang-divider">English Version</div>
+
+    <!-- 英文版 -->
+    <div class="magazine-container" lang="en">
+        <div class="issue-header">
+            <div class="issue-date">APRIL 17, 2026 · FRIDAY | A DAY OF REDEPLOYMENT</div>
+            <h1 class="issue-title">No Class, No Standstill: A Friday Rewritten in Real Time</h1>
+            <p class="issue-subtitle">Class cancellations reshaped the schedule, but self-study, coursework, quick meals, and a late-night hotpot session kept the day moving under control.</p>
+        </div>
+
+        <img src="./pic_20260417/t1.jpg" alt="Software systems course design class" class="feature-image">
+        <p class="image-caption">Photo: Inside the software systems course design class, where code on screen and classroom order advanced in parallel. (Photo by @LuoryHan)</p>
+
+        <div class="article-content">
+            <p class="first-paragraph">April 17, Friday, began at 8:10 in the morning with work already in motion. The original plan called for two classes: Intelligent Embedded Chips and an ideological theory course. But the first was canceled because the instructor was away on business, and the second was suspended due to a practice week. The timetable changed without warning, and the day quickly shifted from a classroom-driven routine to a personally directed operation.</p>
+
+            <h3 class="section-title">I. Schedule Disrupted, Work Immediately Moves In</h3>
+            <p>For a student, the true test is often not a heavy class load, but whether order can be rebuilt once the original structure collapses. On Friday morning, outside arrangements disappeared. On the surface, it looked like free time had been created. In reality, it became a block of time that had to be seized, organized, and turned into productive ground by personal discipline alone.</p>
+            <p>From morning to noon, cloud computing coursework became the day’s central front. The logic behind Docker containers, cloud nodes, and the relevant architecture grew clearer step by step. YAML syntax also moved from vague familiarity to basic command. The work was not light, but the direction was finally clear, and the framework began to take shape.</p>
+
+            <h3 class="section-title">II. Progress Continues Even as Friction Builds</h3>
+            <p>The morning was not smooth. Technical frustration and environmental noise struck at the same time, both cutting into efficiency. A note-taking app handled embedded audio files with clumsy and confusing interaction logic, wasting time and patience. Meanwhile, loud music and singing from upstairs or next door kept interrupting concentration.</p>
+            <p>But the real measure of the day was not whether disruption existed. It was whether rhythm collapsed under pressure. It did not. The work kept moving, the task did not stall, and the morning still produced meaningful progress in understanding key concepts.</p>
+
+            <img src="./pic_20260417/t2.jpg" alt="Instant noodles after class" class="sub-feature-image">
+            <p class="sub-image-caption">Photo: A simple post-class refuel. One cup of instant noodles became a delayed lunch. (Photo by @LuoryHan)</p>
+
+            <h3 class="section-title">III. Afternoon Transition: Class and Recovery on Parallel Tracks</h3>
+            <p>By 1:43 p.m., only a small bonus section remained unfinished in the cloud computing work, while the 2:00 p.m. software systems course design class was already approaching. Lunch had not even happened yet. Reality does not pause to wait for readiness, so the only choice was to keep moving: transition first, recover later.</p>
+            <p>After class ended and the return trip was complete, the clock showed 4:25 p.m. A sausage, a cup of noodles, and a bottle of water formed a highly practical lunch. It was not elaborate, but it served its purpose: restore energy and bridge the day into the evening. Because dinner was only a short time away, there was even consideration of exercising afterward to clear room for the next round.</p>
+
+            <img src="./pic_20260417/t3.jpg" alt="Leaving the hotpot restaurant for the nearby store" class="sub-feature-image">
+            <p class="sub-image-caption">Photo: A temporary reroute during the evening gathering, shifting from the hotpot restaurant toward the neighboring store. (Photo by @LuoryHan)</p>
+
+            <img src="./pic_20260417/t4.jpg" alt="Paying for ingredients at the store" class="sub-feature-image">
+            <p class="sub-image-caption">Photo: A quick procurement operation, with ingredients checked out at a self-service register. (Photo by @LuoryHan)</p>
+
+            <h3 class="section-title">IV. Evening Twist: From Dinner to Improvised Procurement</h3>
+            <p>By night, the tone of the day had clearly changed. Friday was already meant to be a pressure-release zone, and the evening had been set aside for dining out and relaxing with classmates. But once the hotpot gathering began, a small twist emerged: part of the group decided to slip out to the neighboring store to purchase extra ingredients. What had been a simple dinner flow turned into a brief operation with movement, timing, and coordination.</p>
+            <p>The sequence was not complicated, but it carried real field tension. One person moved fast, another handled the items, and another closed the transaction at the register. In a short span of time, the pace accelerated, coordination tightened, and an ordinary dinner gained an unexpected sense of action.</p>
+
+            <img src="./pic_20260417/t5.jpg" alt="Running back to the hotpot restaurant with ingredients" class="sub-feature-image">
+            <p class="sub-image-caption">Photo: Procurement complete, the return run raised the tempo of the evening even further. (Photo by @LuoryHan)</p>
+
+            <blockquote class="pull-quote">
+                “Plans may change. Rhythm cannot be allowed to collapse.”
+            </blockquote>
+
+            <h3 class="section-title">V. Nightfall Closure: A Friday Release That Actually Counted</h3>
+            <p>Once the purchase was finished and the group returned, the night finally came back to what it was supposed to be: eating, talking, relaxing. Hotpot, conversation, billiards, and the later trip to buy a few more things together formed the true decompression segment of the day. Compared with the daytime struggle against self-study pressure, class timing, noise, and software frustration, the evening was clearly lighter.</p>
+            <p>Yet this relaxation was not aimless drift. It was a controlled release after a day of constant adjustment. Friday night could be used to breathe only because Saturday and Sunday would bring work back into focus. That is exactly why the dinner, the outing, and the movement of the night mattered: they were a tactical pause, not a shutdown.</p>
+
+            <img src="./pic_20260417/t6.jpg" alt="Hotpot table scene" class="sub-feature-image">
+            <p class="sub-image-caption">Photo: The hotpot session in full swing, with the tabletop recording the most relaxed stretch of the day. (Photo by @LuoryHan)</p>
+
+            <h3 class="section-title">VI. Full-Day Assessment: Rewritten, Yet Still Moving Forward</h3>
+            <p>Looking back, the defining feature of the day was not ease, but redeployment. Canceled classes did not create idleness; they handed control back to the individual. Cloud computing work came with irritation and interruption, yet still produced real progress. The afternoon class and quick meal were rushed, but the chain of movement held. And by night, social time and hotpot pulled the day’s tension back into a manageable range.</p>
+            <p>That is the real value of Friday. It lets a person breathe, but not drift. Work still has to advance, and pressure still has to be released in proportion. At the end of the day, what remained was not disorder, but a clear conclusion: even when the plan is rewritten in real time, control of the rhythm must stay in your own hands.</p>
+        </div>
+
+        <div class="extra-content">
+            <h3 class="extra-title">Daily Briefing | 2026.04.17</h3>
+            <p>
+                In the morning, canceled classes redirected the day into self-managed study, and cloud computing work made meaningful structural progress.<br>
+                In the afternoon, the software systems course design class was completed on schedule, followed by the most practical possible refueling routine.<br>
+                At night, hotpot, procurement, the return run, and group time formed the lightest segment of the day and marked a controlled pause before the weekend workload resumed.<br>
+                The conclusion is direct: outside plans may change, but personal rhythm cannot be surrendered.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 LuoryHan · 日常趣事 / Daily Notes</p>
+    </footer>
+</body>
+</html>
